@@ -12,5 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          $this->call(LaratrustSeeder::class);
+         $this->call(InterestRateDBSeeder::class);
+         $this->call(LoanTypeDBSeeder::class);
+         $this->call(PaymentTypeDBSeeder::class);
     }
 }

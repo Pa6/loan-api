@@ -9,6 +9,17 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthenticationController extends Controller
 {
+
+
+    public function TestUser(){
+
+        $user = JWTAuth::parseToken()->authenticate();
+
+        if($user->hasRole('admin')){
+            return "here";
+        }
+
+    }
     public function getuser(){
         $token = JWTAuth::getToken();
         return $token;

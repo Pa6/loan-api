@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 
 Route::post('authenticate', 'api\AuthenticationController@authenticate');
+
+Route::any('test-user','api\AuthenticationController@TestUser');

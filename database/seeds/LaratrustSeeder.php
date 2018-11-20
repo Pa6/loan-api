@@ -41,7 +41,7 @@ class LaratrustSeeder extends Seeder
 
         $user = \App\User::create([
             'name' => 'admin',
-            'email' => 'admin@ab.com',
+            'email' => 'admin@aspire.com',
             'password' => bcrypt('password')
         ]);
 
@@ -50,14 +50,14 @@ class LaratrustSeeder extends Seeder
 
         $userManager = \App\User::create([
             'name' => 'admin',
-            'email' => 'manager@ab.com',
+            'email' => 'manager@aspire.com',
             'password' => bcrypt('password')
         ]);
         $userManager->attachRole($Managerrole);
 
         $userNormal = \App\User::create([
             'name' => 'admin',
-            'email' => 'user@ab.com',
+            'email' => 'user@aspire.com',
             'password' => bcrypt('password')
         ]);
         $userNormal->attachRole($Userrole);
