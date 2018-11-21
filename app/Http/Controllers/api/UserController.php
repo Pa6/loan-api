@@ -1,5 +1,5 @@
 <?php
-
+/* created by pacoder */
 namespace App\Http\Controllers\api;
 
 use App\Role;
@@ -12,11 +12,42 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends Controller
 {
+
+    /**
+     * Documentation Block
+     * @api {get} /user Get user
+     * @apiName Get user
+     * @apiGroup User
+     * @apiSuccess {object} Success-Response  On success returns an array containing all users
+     * @apiError (401) {object} Access-denied If token not token or it expired
+     */
+    public function index(){
+        return response()->json(User::all());
+    }
+
+    /**
+     * Documentation Block
+     * @api {get} /user/{id}/show Get one user
+     * @apiName Get user
+     * @apiGroup Payment
+     * @apiSuccess {object} Success-Response  On success returns an object containing user
+     * @apiError (401) {object} Access-denied If token not token or it expired
+     */
     public function show($id)
     {
         return response()->json(User::findOrFail($id));
     }
 
+    /**
+     * Documentation Block
+     * @api {post} /user Register new user
+     * @apiName Register
+     * @apiGroup API-User
+     * @apiError (422) {object} Unprocessable-Entity If a validation occurs. the api returns and object of validation errors
+     * @apiSuccess {object} Success-Response  On success returns an object containing created entity
+     * @apiError (401) {object} Access-denied If token not token or it expired
+     * @apiError {object} Error with status code accordingly as well details of the error
+     */
     public function store(Request $request){
         $validator = Validator::make($request->all(), User::rules());
         if ($validator->fails()) {
@@ -37,6 +68,15 @@ class UserController extends Controller
     }
 
 
+    /**
+     * Documentation Block
+     * @api {patch} /user/{id} Update new user
+     * @apiName Update
+     * @apiGroup API-User
+     * @apiError (422) {object} Unprocessable-Entity If a validation occurs. the api returns and object of validation errors
+     * @apiSuccess {object} Success-Response  On success returns an object containing updated entity
+     * @apiError {object} Error with status code accordingly as well details of the error
+     */
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), User::rules($id));

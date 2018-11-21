@@ -1,5 +1,5 @@
 <?php
-
+/* created by pacoder */
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;

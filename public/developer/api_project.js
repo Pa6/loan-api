@@ -1,0 +1,1 @@
+define({  "name": "ASPIRE LOAN API ",  "version": "1.0",  "description": "MINI ASPIRE Api",  "title": "MINI ASPIRE Apps",  "url": "/",  "sampleUrl": false,  "defaultVersion": "0.0.0",  "apidoc": "0.3.0",  "generator": {    "name": "apidoc",    "time": "2018-11-21T18:33:24.697Z",    "url": "http://apidocjs.com",    "version": "0.17.7"  }});

@@ -1,5 +1,5 @@
 <?php
-
+/* created by pacoder */
 use App\PaymentType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
