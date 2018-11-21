@@ -11,6 +11,14 @@
 This LOAN-API is build in laravel 5.5.*
 This API uses JWT-AUTH and LARATRUST 
 
+
+Step to install composer if you dont have then update the dependency by typing: composer update command After create .env (copy .env.example then remove .example) put database credentials accordingly 
+
+Generate key by typing: php artisan key:generate
+
+Run on computer: start mysql and apache/nginx (any other..) Open terminal and go in the directory of the project type: php artisan serve ( it will open on 8000 if you want on other port type php artisan serve — port=****) 
+
+
 ## Laravel
  [laravel](https://laravel.com) 
 
