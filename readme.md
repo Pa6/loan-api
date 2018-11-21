@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## LOAN API 
 This LOAN-API is build in laravel 5.5.*
 This API uses JWT-AUTH and LARATRUST 
 
