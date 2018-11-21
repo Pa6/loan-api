@@ -68,12 +68,12 @@ class LoanController extends Controller
             return response()->json(['error' => 'bad-request', 'next' => 'please pay the previous loan'], 400);
         }
 
-
         $repayment_frequency = $request['repayment_frequency'] != "monthly" ? "annual"  : "monthly";
 
         $interest_type = InterestType::findOrFail($request['interest_type_id']);
         $loan_type = LoanType::findOrFail($request['loan_type_id']);
         $period = $request['period'];
+
         if($repayment_frequency == 'monthly') {
             $to_time = date('Y-m-d', strtotime("+".$period." months", strtotime($request['from_time'])));
         }else{
@@ -90,9 +90,9 @@ class LoanController extends Controller
                 'code'=> $this->generateUniqueCode(),
                 'to_time' => $to_time
             ]);
+
         $loan = Loan::create($request->all());
 
-        if($loan->request_id == $loan->request_id){
 
             ///check type of interest first
             $interest_type = InterestType::findOrFail($loan->interest_type_id);
@@ -144,9 +144,7 @@ class LoanController extends Controller
 
             }
 
-        }else{
-            return response()->json(['error' => 'bad-request'],400);
-        }
+
         return response()->json($loan);
     }
 
