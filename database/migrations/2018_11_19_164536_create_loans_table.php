@@ -25,8 +25,7 @@ class CreateLoansTable extends Migration
             $table->string('collateral_data')->default('N/A');
             $table->integer('request_id')->unsigned()->index();
             $table->foreign('request_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('approval_id')->unsigned()->index();
-            $table->foreign('approval_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('approval_id')->default(0);
             $table->string('status')->default('pending');
             $table->string('extra')->nullable();
             $table->integer('loan_type_id')->unsigned()->index();
@@ -34,6 +33,7 @@ class CreateLoansTable extends Migration
             $table->integer('interest_rate')->default(1);
             $table->string('from_time')->nullable();
             $table->string('to_time')->nullable();
+            $table->integer('period')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -48,6 +48,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof ModelNotFoundException){
+            return response()->json(['error' => 'not_found'],404);
+        }
+
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+            return response()->json(['error' => 'not_found'], 404);
+        }
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException) {
+            return response()->json(['error' => 'access-denied', 'next' => 'login'], 401);
+        }
+
         return parent::render($request, $exception);
     }
 }

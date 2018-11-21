@@ -18,10 +18,10 @@ class CreatePaymentsTable extends Migration
             $table->string('name');
             $table->string('code');
             $table->double('total_amount', 15,3);
+            $table->double('total_amount_paid', 15,3)->default(0);
             $table->integer('payer_id')->unsigned()->index();
             $table->foreign('payer_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('receiver_id')->unsigned()->index();
-            $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('receiver_id')->default(0);
             $table->string('currency')->default('USD');
             $table->integer('loan_id')->unsigned()->index();
             $table->foreign('loan_id')->references('id')->on('loans')->onDelete('cascade');

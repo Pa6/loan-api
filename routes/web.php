@@ -11,11 +11,38 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
 
-Route::post('authenticate', 'api\AuthenticationController@authenticate');
+    Route::post('authenticate', 'api\AuthenticationController@authenticate');
 
-Route::any('test-user','api\AuthenticationController@TestUser');
+    Route::any('test-user','api\AuthenticationController@TestUser');
+    Route::resource('user','api\UserController',['only' => ['store']]);
+
+    Route::group(['middleware' => ['jwt.auth']], function () {
+
+            /*
+            |--------------------------------------------
+            |       User route
+            |--------------------------------------------
+            */
+            Route::resource('user','api\UserController',['except' => ['store']]);
+
+
+            /*
+            |--------------------------------------------
+            |       Loan route
+            |--------------------------------------------
+            */
+            Route::resource('loan','api\LoanController');
+
+
+            /*
+            |--------------------------------------------
+            |       Payment route
+            |--------------------------------------------
+            */
+            Route::resource('payment','api\PaymentController');
+    });

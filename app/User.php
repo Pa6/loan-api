@@ -18,7 +18,7 @@ class User extends  Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'location'
     ];
 
     /**
@@ -61,6 +61,7 @@ class User extends  Authenticatable implements JWTSubject
     ///validation rules
     public static function rules($user_id = 0) {
         $rules = [
+            'name' => 'required',
             'role_id' => 'required|numeric',
             'email' => 'email|required|unique:users,email,' . $user_id,
             'password' =>'required|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
