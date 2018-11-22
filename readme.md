@@ -11,12 +11,19 @@
 This LOAN-API is build in laravel 5.5.*
 This API uses JWT-AUTH and LARATRUST 
 
+Clone the git repository from this link https link:  https://github.com/Pa6/loan-api.git
 
-Step to install composer if you dont have then update the dependency by typing: composer update command After create .env (copy .env.example then remove .example) put database credentials accordingly 
+Step 1: Install composer if you dont have then update laravel dependency by typing: composer update command
+After create .env (copy .env.example then remove .example) put database credentials accordingly 
+Step 2: Generate Application key: php artisan key:generate
+Step 3: Migrate Database: php artisan migrate
+Step 4: Make Seed : php artisan db:seed (Loan type seeder, Payment type seeder, Interest type seeder)
 
-Generate key by typing: php artisan key:generate
 
-Run on computer: start mysql and apache/nginx (any other..) Open terminal and go in the directory of the project type: php artisan serve ( it will open on 8000 if you want on other port type php artisan serve — port=****) 
+Run on computer: start mysql and apache/nginx (any other..) 
+Open terminal and go in the directory of the project type: php artisan serve ( it will open on 8000 if you want on other port type php artisan serve —port=****)
+Deploy on server: Follow documentation on https://laravel.com/docs/5.5
+
 
 
 ## Laravel
