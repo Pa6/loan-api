@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInterestTypesTable extends Migration
+class CreateCarTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateInterestTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('interest_types', function (Blueprint $table) {
+        Schema::create('car_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('description')->nullable();
+            $table->string('name')->nullable();
+            $table->string('details')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateInterestTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('interest_types');
+        Schema::dropIfExists('car_types');
     }
 }

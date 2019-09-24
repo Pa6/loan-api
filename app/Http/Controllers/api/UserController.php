@@ -55,9 +55,9 @@ class UserController extends Controller
         }
 
         $data = [
-            'name' => $request['name'],
+            'first_name' => $request['first_name'],
             'email' => $request['email'],
-            'location' => !empty($request['email']) ? $request['email'] : '-',
+            'last_name' => $request['last_name'],
             'password' => bcrypt($request['password'])
         ];
 
@@ -87,8 +87,8 @@ class UserController extends Controller
         if($user->hasRole('admin')) {
             $user = User::findOrFail($id);
             $user->email = $request['email'];
-            $user->name = $request['name'];
-            $user->location = !empty($request['location']) ? $request['location']  : '';
+            $user->first_name = $request['first_name'];
+            $user->last_name = $request['last_name'];
             if ($request['password']) {
                 $user->password = bcrypt($request['password']);
             }
@@ -99,8 +99,8 @@ class UserController extends Controller
 
             if($user_->id == $user->id){
                 $user->email = $request['email'];
-                $user->name = $request['name'];
-                $user->location = !empty($request['location']) ? $request['location']  : '';
+                $user->first_name = $request['first_name'];
+                $user->last_name = $request['last_name'];
                 if ($request['password']) {
                     $user->password = bcrypt($request['password']);
                 }

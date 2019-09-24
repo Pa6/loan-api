@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoanTypesTable extends Migration
+class CreateCarFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateLoanTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('loan_types', function (Blueprint $table) {
+        Schema::create('car_files', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('description');
+            $table->string('name')->nullable();
+            $table->integer('car_id')->unsigned()->index();
+            $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +30,6 @@ class CreateLoanTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loan_types');
+        Schema::dropIfExists('car_files');
     }
 }

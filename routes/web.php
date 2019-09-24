@@ -33,16 +33,17 @@
 
             /*
             |--------------------------------------------
-            |       Loan route
+            |       Car type route
             |--------------------------------------------
             */
-            Route::resource('loan','api\LoanController');
+            Route::resource('car-type','api\CarTypeController');
 
 
             /*
             |--------------------------------------------
-            |       Payment route
+            |       Car type route
             |--------------------------------------------
             */
-            Route::resource('payment','api\PaymentController');
+//            Route::resource('driver-request','api\CarTypeController');
+
     });

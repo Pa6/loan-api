@@ -16,9 +16,6 @@ class LaratrustSeeder extends Seeder
         $this->command->info('Truncating User, Role and Permission tables');
         $this->truncateLaratrustTables();
 
-        $config = config('laratrust_seeder.role_structure');
-        $userPermission = config('laratrust_seeder.permission_structure');
-        $mapPermission = collect(config('laratrust_seeder.permissions_map'));
 
         $Adminrole = \App\Role::create([
             'name' => 'admin',
@@ -26,41 +23,68 @@ class LaratrustSeeder extends Seeder
             'description' => 'Admin'
         ]);
 
-        $Managerrole = \App\Role::create([
-            'name' => 'manager',
-            'display_name' => 'Manager',
-            'description' => 'Manager'
+        $driverRole = \App\Role::create([
+            'name' => 'driver',
+            'display_name' => 'Driver',
+            'description' => 'Driver'
         ]);
 
-        $Userrole = \App\Role::create([
-            'name' => 'user',
-            'display_name' => 'User',
-            'description' => 'User'
+        $rentRole = \App\Role::create([
+            'name' => 'rent',
+            'display_name' => 'Rent',
+            'description' => 'Rent'
         ]);
+
+        $clientRole = \App\Role::create(
+            [
+                'name' => 'client',
+                'display_name' => 'Client',
+                'description' => 'Client'
+
+            ]
+        );
+
 
 
         $user = \App\User::create([
-            'name' => 'admin',
-            'email' => 'admin@aspire.com',
-            'password' => bcrypt('password')
+            'first_name' => 'Admin',
+            'last_name' => 'Ninja',
+            'phone' => '0788355919',
+            'email' => 'admin@transport.rw',
+            'password' => bcrypt('admin')
         ]);
 
         $user->attachRole($Adminrole);
 
 
-        $userManager = \App\User::create([
-            'name' => 'Manager',
-            'email' => 'manager@aspire.com',
-            'password' => bcrypt('password')
+        $userDriver = \App\User::create([
+            'phone' => '0786160780',
+            'first_name' => 'Driver',
+            'last_name' => 'Transporter',
+            'email' => 'driver@transport.rw',
+            'password' => bcrypt('transport')
         ]);
-        $userManager->attachRole($Managerrole);
+        $userDriver->attachRole($driverRole);
 
-        $userNormal = \App\User::create([
-            'name' => 'User',
-            'email' => 'user@aspire.com',
-            'password' => bcrypt('password')
+        $userRent = \App\User::create([
+            'first_name' => 'Rent',
+            'last_name' => 'MrX',
+            'phone' => '0788821046',
+            'email' => 'rent@transport.rw',
+            'password' => bcrypt('rent')
         ]);
-        $userNormal->attachRole($Userrole);
+        $userRent->attachRole($rentRole);
+
+        $clientUser = \App\User::create([
+            'phone' => '0788355902',
+            'last_name' => 'Eric',
+            'first_name' => 'Ar',
+            'email' => 'agent@transport.rw',
+            'password' => bcrypt('agent')
+        ]);
+        $clientUser->attachRole($clientRole);
+
+
 
     }
 
